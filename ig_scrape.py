@@ -92,7 +92,7 @@ async def page_one(browser, target):
             for i in range(len(photosCarousel)):
                 await get_post_content(page, target)
                 if i < len(photosCarousel) - 1:
-                    await page.click("a[class='SWk3c  Zk-Zb coreSpriteRightChevron']")
+                    await page.click("button[class='  _6CZji']")
                 time.sleep(2)
         else:
             await get_post_content(page, target)
@@ -103,15 +103,15 @@ async def page_one(browser, target):
     time.sleep(3)
 
 
-async def page_two(browser, target):
-    page = await browser.newPage()
-    await page.setViewport({ 'width': 1280, 'height': 926 })
-    await page.goto('https://www.instagram.com/' + target + '/?hl=en')
-    story = await page.querySelector('.h5uC0')
-    print(story)
+# async def page_two(browser, target):
+#     page = await browser.newPage()
+#     await page.setViewport({ 'width': 1280, 'height': 926 })
+#     await page.goto('https://www.instagram.com/' + target + '/?hl=en')
+#     story = await page.querySelector('.h5uC0')
+#     print(story)
 
-    if story:
-        await scrap_story(page)
+#     if story:
+#         await scrap_story(page)
 
 async def browser_launch(target):
     browser = await launch({'headless': False, 'slowMo': 1})
@@ -120,4 +120,4 @@ async def browser_launch(target):
 
     await browser.close()
 
-asyncio.get_event_loop().run_until_complete(browser_launch('target'))
+asyncio.get_event_loop().run_until_complete(browser_launch('bellahadid'))
